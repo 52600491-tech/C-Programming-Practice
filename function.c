@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include <math.h>
 
 void nhapN(int *n) {
     do {
@@ -33,7 +32,7 @@ int demBoi3Va5(int n) {
 
 bool kiemTraNguyenTo(int n) {
     if (n < 2) return false;
-    for (int i = 2; i <= sqrt(n); i++) {
+    for (int i = 2; i * i <= n; i++) {
         if (n % i == 0) return false;
     }
     return true;
@@ -41,8 +40,10 @@ bool kiemTraNguyenTo(int n) {
 
 bool kiemTraChinhPhuong(int n) {
     if (n < 0) return false;
-    int canBacHai = sqrt(n);
-    return (canBacHai * canBacHai == n);
+    for (int i = 0; i * i <= n; i++) {
+        if (i * i == n) return true;
+    }
+    return false;
 }
 
 int demChuSoLe(int n) {
